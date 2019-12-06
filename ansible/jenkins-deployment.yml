@@ -24,7 +24,7 @@
         dest: /home/vagrant/jenkins/sample.xml
 
     #Not using docker image module to avoid more requisites
-    - name: Build jenkins with sample image
+    - name: Build jenkins sample image
       shell: cd /home/vagrant/docker_images/jenkins-sample/ && docker build -t jenkins-sample .
 
     - name: Create a data container
@@ -50,9 +50,9 @@
 
     - name: Get jenkins-cli
       get_url:
-        url: 'http://192.168.56.11:31516/jnlpJars/jenkins-cli.jar'
+        url: 'http://192.168.56.11:8080/jnlpJars/jenkins-cli.jar'
         dest: /home/vagrant/jenkins
       
     - name: Create sample job
-      shell: java -jar /home/vagrant/jenkins/jenkins-cli.jar -s http://192.168.56.11:31516/ create-job sample-job < /home/vagrant/jenkins/sample.xml
+      shell: java -jar /home/vagrant/jenkins/jenkins-cli.jar -s http://192.168.56.11:8080/ create-job dsl-job < /home/vagrant/jenkins/sample.xml
 

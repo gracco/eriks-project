@@ -3,3 +3,6 @@
 
 - name: Include mariadb playbook
   import_playbook: mariadb.yml
+
+- name: Include jenkins playbook
+  import_playbook: jenkins-deployment.yml

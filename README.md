@@ -5,13 +5,20 @@
   - ansible 2.9.2 or later
   - Vagrant 2.2.6 or later
   - Virtualbox 6.0 or later
+  - Vault password as a file
 
 - Hardware
   - 2 VCPUs
   - 4Gb of Ram
 
 # Running:
-## To run the project
+
+## Create vault password as a file
+  $ cat <<EOF > /tmp/vault-cred                                            
+f56817f28d      
+EOF
+
+## To run the project (This will run both MariaDB and Jenkins as a containers)
   $ vagrant up
   $ cd ansible
   $ ansible-playbook -v site.yml
@@ -19,12 +26,7 @@
 ## To test Mariadb
   $ mysql -u [user] -h 192.168.56.11 -p
 
-# Jenkins
-## To create a simple jenkins server to test DSL
-  $ cd ansible
-  $ ansible-playbook -v common.yml
-  $ ansible-playbook -v jenkins-deployment.yml
-
-## To access Jenkins
+## To access Jenkins and run the DSL job already imported
 http://192.168.56.11:8080/
 
+## The JOB DSL is in the Jenkinsfile

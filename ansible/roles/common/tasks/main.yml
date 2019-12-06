@@ -1,6 +1,6 @@
 - name: Install base packages
   yum:
-    name: [yum-utils, device-mapper-persistent-data, lvm2, epel-release.noarch, java-latest-openjdk]
+    name: [yum-utils, device-mapper-persistent-data, lvm2, epel-release.noarch]
 
 - name: Check if repo file exists
   stat: 
@@ -14,7 +14,7 @@
 
 - name: Install docker packages
   yum:
-    name: [docker-ce, docker-ce-cli, containerd.io, python-pip]
+    name: [docker-ce, docker-ce-cli, containerd.io, python-pip, java-latest-openjdk]
 
 - name: Installs docker integration package
   pip:
