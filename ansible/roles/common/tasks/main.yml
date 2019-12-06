@@ -1,6 +1,6 @@
 - name: Install base packages
   yum:
-    name: [yum-utils, device-mapper-persistent-data, lvm2, epel-release.noarch]
+    name: [yum-utils, device-mapper-persistent-data, lvm2, epel-release.noarch, java-latest-openjdk]
 
 - name: Check if repo file exists
   stat: 

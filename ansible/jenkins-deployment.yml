@@ -48,4 +48,11 @@
         port: 8080
         delay: 10
 
+    - name: Get jenkins-cli
+      get_url:
+        url: 'http://192.168.56.11:31516/jnlpJars/jenkins-cli.jar'
+        dest: /home/vagrant/jenkins
+      
+    - name: Create sample job
+      shell: java -jar /home/vagrant/jenkins/jenkins-cli.jar -s http://192.168.56.11:31516/ create-job sample-job < /home/vagrant/jenkins/sample.xml
 

@@ -1,11 +1,13 @@
-job('DSL-Tutorial-1-Test') {
+job('python-ip-script') {
     scm {
-        git('git://github.com/quidryan/aws-sdk-test.git')
-    }
-    triggers {
-        scm('H/15 * * * *')
+        git {
+            remote {
+                name('python-ip-script')
+                url('https://github.com/beerkeeper/python-ip-script')
+            }
+        }
     }
     steps {
-        maven('-e clean test')
+        shell('pip install -r requirements.txt && python main.py')
     }
 }

@@ -20,7 +20,9 @@
   $ mysql -u [user] -h 192.168.56.11 -p
 
 # Jenkins
-## To create a simple jenkins server to test
+## To create a simple jenkins server to test DSL
+  $ cd ansible
+  $ ansible-playbook -v common.yml
   $ ansible-playbook -v jenkins-deployment.yml
 
 ## To access Jenkins
