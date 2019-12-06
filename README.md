@@ -14,19 +14,19 @@
 # Running:
 
 ## Create vault password as a file
-  $ cat <<EOF > /tmp/vault-cred                                            
+  - $ cat <<EOF > /tmp/vault-cred                                            
 f56817f28d      
 EOF
 
 ## To run the project (This will run both MariaDB and Jenkins as a containers)
-  $ vagrant up
-  $ cd ansible
-  $ ansible-playbook -v site.yml
+  - $ vagrant up
+  - $ cd ansible
+  - $ ansible-playbook -v site.yml
 
 ## To test Mariadb
-  $ mysql -u [user] -h 192.168.56.11 -p
+  - $ mysql -u [user] -h 192.168.56.11 -p
 
-## To access Jenkins and run the DSL job already imported
-http://192.168.56.11:8080/
+### To access Jenkins and run the DSL job already imported
+- http://192.168.56.11:8080/
 
-## The JOB DSL is in the Jenkinsfile
+### The JOB DSL is in the Jenkinsfile
