@@ -1,0 +1,5 @@
+- name: Include common playbook
+  import_playbook: common.yml
+
+- name: Include mariadb playbook
+  import_playbook: mariadb.yml

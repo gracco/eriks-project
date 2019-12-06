@@ -1,0 +1,22 @@
+- hosts: all
+  become: True
+  tasks:
+    - name: Create a data container
+      docker_container:
+        name: mydata-mariadb
+        image: busybox
+        volumes:
+          - /data
+
+    - name: Create a mariadb container
+      docker_container:
+        name: mariadb
+        image: mariadb:10.2.14
+        published_ports:
+          - 3306:3306
+        volumes_from:
+          - mydata-mariadb
+        env:
+          MYSQL_ROOT_PASSWORD: "{{ VAULT_MARIADB_PASSWORD }}"
+          MYSQL_USER: "{{ VAULT_MARIADB_USER }}"
+          MYSQL_PASSWORD: "{{ VAULT_MARIADB_PASSWORD }}"

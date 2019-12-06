@@ -1,0 +1,28 @@
+- name: Install base packages
+  yum:
+    name: [yum-utils, device-mapper-persistent-data, lvm2, epel-release.noarch]
+
+- name: Check if repo file exists
+  stat: 
+    path: /etc/yum.repos.d/docker-ce.repo
+  register: docker_ce_repo
+
+- name: Add docker offical repository
+  shell: yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+  when: docker_ce_repo.stat.exists == false
+  ignore_errors: true
+
+- name: Install docker packages
+  yum:
+    name: [docker-ce, docker-ce-cli, containerd.io, python-pip]
+
+- name: Installs docker integration package
+  pip:
+    name: docker-py
+
+- name: Enable and start docker
+  systemd:
+    name: docker
+    state: started
+    enabled: true
+
